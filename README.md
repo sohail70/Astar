@@ -1,2 +1,2 @@
 # Astar
-create a binary maze file before running the programm.
+create a binary maze file before running the program.
