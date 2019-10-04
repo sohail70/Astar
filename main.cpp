@@ -35,15 +35,14 @@ void PrintBoard(vector<vector<State>> board)
 		cout << "\n";
 	}
 }
-//for input streams: draw something from it with operator>>,
-//for output streams : push something into it with operator<<.
+
 vector<State> ParseLine(string line)
 {
 	vector<State> vec;
 	istringstream sline(line);
 	int n;
 	char c;
-	while (sline >> n >> c && c == ',')   //0,1 yani int-char-int --->pas vaghti stream mikuni ham n va ham c ro stream kun
+	while (sline >> n >> c && c == ',')  
 	{
 		if (n == 0)
 			vec.push_back(State::kEmpty);
@@ -63,7 +62,7 @@ vector<vector<State>> ReadBoardFile(string path)
 	if (myfile) {
 		string line;
 
-		while (std::getline(myfile, line)) //khat be khat ta enteha mire -- dar vaghe har khat ro dar har loop mirize to line!
+		while (std::getline(myfile, line)) 
 		{
 			board.push_back(ParseLine(line));
 		}
@@ -99,8 +98,8 @@ bool Compare(vector<int> node1, vector<int> node2)
 }
 vector<int> CellSort(vector<vector<int>> opennodes)
 {
-	sort(opennodes.begin(), opennodes.end(), Compare);  //check https://www.geeksforgeeks.org/sort-c-stl/
-	vector<int> currentNode = opennodes.back(); //last element has lower fValue
+	sort(opennodes.begin(), opennodes.end(), Compare); 
+	vector<int> currentNode = opennodes.back(); 
 	return currentNode;
 }
 bool CheckValidCell(int x, int y, vector<vector<State>>& board)
@@ -122,7 +121,7 @@ bool CheckValidCell(int x, int y, vector<vector<State>>& board)
 void ExpandNeighbors(vector<int>& currNode, vector<vector<int>>& opennodes, vector<vector<State>>& board, vector<int> goal)
 {
 	const int numDir = 4; //4 or 8
-	const int delta[numDir][2]{ {-1,0},{0,-1},{1,0},{0,1} }; //bala chap paeen rast
+	const int delta[numDir][2]{ {-1,0},{0,-1},{1,0},{0,1} }; //up left down right
 	for (int i = 0; i < numDir; i++)
 	{
 		int xNeigh = currNode[0] + delta[i][0];
@@ -165,7 +164,7 @@ vector<vector<State>> search(vector<vector<State>> board, vector<int> start, vec
 
 int main()
 {
-	auto board = ReadBoardFile("D:/far/cpp nano degree/tamrinha/board.txt");//Unless you're targeting something really ancient like Windows 98, always use forward slashes. All modern operating systems including Windows support forward slashes in paths. Only Windows support backlashes, so using backslashes reduces the portability of your code.
+	auto board = ReadBoardFile("D:/far/cpp nano degree/tamrinha/board.txt");
 	vector<int> start, goal;
 	start = { 0,0 };
 	goal = { 4,5 };
