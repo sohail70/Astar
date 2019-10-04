@@ -164,7 +164,7 @@ vector<vector<State>> search(vector<vector<State>> board, vector<int> start, vec
 
 int main()
 {
-	auto board = ReadBoardFile("D:/far/cpp nano degree/tamrinha/board.txt");
+	auto board = ReadBoardFile("maze.txt");
 	vector<int> start, goal;
 	start = { 0,0 };
 	goal = { 4,5 };
