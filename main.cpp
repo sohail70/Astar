@@ -96,11 +96,9 @@ bool Compare(vector<int> node1, vector<int> node2)
 	else
 		return false;
 }
-vector<int> CellSort(vector<vector<int>> opennodes)
+void CellSort(vector<vector<int>>& opennodes)
 {
 	sort(opennodes.begin(), opennodes.end(), Compare); 
-	vector<int> currentNode = opennodes.back(); 
-	return currentNode;
 }
 bool CheckValidCell(int x, int y, vector<vector<State>>& board)
 {
@@ -143,7 +141,8 @@ vector<vector<State>> search(vector<vector<State>> board, vector<int> start, vec
 	int h = Heuristic(start[0], start[1], goal[0], goal[1]);
 	AddToOpen(start[0], start[1], g, h, openList, board);
 	while (!openList.empty()) {
-		vector<int> currNode = CellSort(openList);
+		CellSort(openList);
+		vector<int> currNode = openList.back();
 		openList.pop_back();
 		int x = currNode[0];
 		int y = currNode[1];
